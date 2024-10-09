@@ -29,4 +29,26 @@ llm =  ChatGoogleGenerativeAI(model="gemini-1.5-pro-latest")
 
 embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 
-# FAISS ()
+# FAISS (Facebook AI Similarity Search) is a library that allows developers to store and search for embeddings of documents that are similar to each other.
+vector = FAISS.from_documents(documents, embeddings)
+
+prompt = ChatPromptTemplate.from_template("""Answer the following question based only on the provided context:
+<context>{context}</context>                                          
+
+Question: {input}""")
+
+document_chain = create_stuff_documents_chain(llm, prompt)
+
+retriever = vector.as_retriever()
+retrieval_chain = create_retrieval_chain(retriever, document_chain) # document chain being part of the retrieval Chain
+
+response = retrieval_chain.invoke(
+  {
+    "context": "You are a content writer who is creating a LinkedIn blog for Technology enthusiasts.",
+    "input": """Please write a blog on the given content that sounds professional. 
+                The blog should be more than 500 words and well structured in distict chapters.
+                Use any facts, data or statistics available in the given input.""",
+  }
+)
+
+print(response["answer"])

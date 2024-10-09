@@ -1,17 +1,16 @@
 pandas
 python-dotenv
-os-sys
 
 #openai
 langchain
 #langchain-openai
 langchain-google-genai
-langchain-chroma
+#langchain-chroma
 langchain-community
 langsmith
 
 jq
-pyjq
+#pyjq
 
 streamlit
 faiss-cpu
@@ -19,8 +18,10 @@ beautifulsoup4
 tiktoken
 pypdf
 PyPDF2
+lxml
 
 DateTime
 
 typing
 requests
+ipykernel
