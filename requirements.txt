@@ -25,3 +25,6 @@ DateTime
 typing
 requests
 ipykernel
+numexpr
+duckduckgo-search
+Wikipedia
