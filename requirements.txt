@@ -28,3 +28,5 @@ ipykernel
 numexpr
 duckduckgo-search
 Wikipedia
+langchain_community
+pytube
